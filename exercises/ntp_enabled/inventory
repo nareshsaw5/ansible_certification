@@ -1,0 +1,11 @@
+[web]
+node-1
+
+[dev]
+node-2
+
+
+[prod:children]
+web
+dev
+

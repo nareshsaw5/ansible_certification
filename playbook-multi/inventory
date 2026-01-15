@@ -1,0 +1,9 @@
+[web]
+node-1
+node-2
+
+
+[db]
+node-3
+node-4
+

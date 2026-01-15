@@ -1,0 +1,17 @@
+---
+- name:  Remove and stop Apache HTTPD
+  hosts: all
+  tasks:
+    - name:  Stop http service
+      ansible.builtin.service:
+        name:  httpd
+        state:  stopped
+        enabled:  no
+      ignore_errors: yes
+      
+    - name: Uninstall httpd package
+      ansible.builtin.dnf:
+        name:  httpd
+        state:  absent
+      ignore_errors: yes
+...

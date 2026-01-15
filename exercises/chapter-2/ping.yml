@@ -1,0 +1,9 @@
+---
+# The playbook just ping the managed nodes
+
+- name:  Ping the nodes
+  hosts: all
+  become: false
+  tasks:
+    - name: Ping 
+      ansible.builtin.ping:

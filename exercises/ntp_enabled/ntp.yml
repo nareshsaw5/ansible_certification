@@ -1,0 +1,15 @@
+- name: NTP server is enabled
+  hosts: web
+  tasks:
+  - name: Install NTP service
+    ansible.builtin.package:
+      name:  chrony
+      state:  latest
+  - name: Start NTP service
+    ansible.builtin.service:
+      name:  chronyd
+      state:  started
+  - name: Enable NTP service
+    ansible.builtin.service:
+      name:  chronyd
+      enabled:  true

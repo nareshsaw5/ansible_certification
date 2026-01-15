@@ -1,0 +1,8 @@
+---
+- name: Ping workbench hosts
+  hosts: 192.168.56.14
+  gather_facts: no
+  tasks:
+    - name: Ping using Ansible
+      ansible.builtin.ping:
+

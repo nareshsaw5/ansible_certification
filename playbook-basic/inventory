@@ -1,0 +1,17 @@
+[web]
+node-1
+node-2
+node-3
+
+[db]
+node-4
+
+[development]
+node-5
+
+[test]
+node-6
+
+[production:children]
+web
+db

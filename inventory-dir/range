@@ -1,0 +1,12 @@
+[db-servers]
+192.168.[4:7].[0:4]
+
+[webservers]
+server[0:4].example.com
+
+[dns]
+[a:c].dns.example.com
+
+[ipv6]
+2001:db8::[a:f]
+

@@ -1,0 +1,9 @@
+---
+- name: Remove index.html from /var/www/html/index.html
+  hosts: all
+  tasks:
+    - name: Delete a file
+      ansible.builtin.file:
+        path: /var/www/html/index.html
+        state: absent
+

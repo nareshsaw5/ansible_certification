@@ -1,0 +1,52 @@
+---
+
+- name:  Enable internet services
+  hosts: node-3
+  become:  true
+  tasks:
+    - name:  Install latest firewalld,httpd,mariadb-server,php,php-mysqlnd
+      ansible.builtin.dnf:
+        name: 
+        - firewalld
+        - httpd
+        - mariadb-server
+        - php
+        - php-mysqlnd
+        state: latest
+
+    - name:  Ensure firewalld service is enabled and running
+      ansible.builtin.service:
+        name:  firewalld
+        state:  started
+        enabled:  true
+    - name:  Firewall permits access to http service
+      ansible.posix.firewalld:
+        service:  http
+        permanent:  true
+        state:  enabled
+        immediate:  true 
+    - name:  Ensure httpd service is enabled and running
+      ansible.builtin.service:
+        name:  httpd
+        state:  started
+        enabled:  true
+    - name:  Ensure mariadbd service is enabled and running
+      ansible.builtin.service:
+        name:  mariadb
+        state:  started
+        enabled:  true
+    
+    - name:  Copy index.php
+      ansible.builtin.copy:
+        src:  index.php
+        dest:  /var/www/html/index.php
+- name:  Test access to web server
+  hosts:  node-3
+  become:  false
+  tasks:
+    - name: connect to internet web server
+      ansible.builtin.uri:
+        url:  http://node-3
+        return_content:  true
+        status_code:  200
+...
