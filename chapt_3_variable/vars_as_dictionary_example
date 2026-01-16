@@ -1,0 +1,29 @@
+# variables can be written as dictionary
+
+users:
+   bjones:
+     first_name:  Bob
+     last_name:  Jones
+     home_dir:   /users/bjones
+
+   acook:
+     first_name:  Anne
+     last_name:  Cook
+     home_dir:  /users/acook
+
+# access the user data
+# returns 'Bob'
+user.bjones.first_name
+
+# returns '/users/acook
+users.acook.home_dir
+
+# because the variable is defined as python dictionary, an alternative syntax is available
+
+# Returns 'Bob'
+users['bjones']['first_name']
+
+# Returns '/users/acook'
+users['acook']['home_dir']
+
+

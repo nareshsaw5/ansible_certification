@@ -1,0 +1,10 @@
+- name:  Install pacakges
+  hosts:  all
+  vars:
+    user: joe
+    home: /home/joe
+  tasks:
+  - name: Create the user {{ user }}
+    user:
+      name: "{{ user }}"
+

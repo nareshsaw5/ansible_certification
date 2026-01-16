@@ -1,0 +1,11 @@
+--- 
+- name:  Install a package and prints the result
+  hosts:  all
+  tasks: 
+  - name:  Install the package
+    ansible.builtin.dnf:
+      name:  httpd
+      state:  present
+    register:  install_result
+  - debug:
+      var:  install_result

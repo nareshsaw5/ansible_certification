@@ -1,0 +1,24 @@
+[servers]
+demo.example.com ansible_user=joe
+
+#another way to define variable
+[servers:vars]
+user=joe
+
+
+[servers1]
+demo1.example.com
+demo2.example.com
+
+
+[servers2]
+demo3.example.com
+demo4.example.com
+
+[servers:children]
+servers1
+servers2
+
+
+[servers:vars]
+user=joe

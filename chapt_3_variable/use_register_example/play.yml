@@ -1,0 +1,16 @@
+---
+- name:  Install/Remove packages
+  hosts: all
+  # install or remove the package
+  # pass as variable with -e, default is install
+  vars: 
+    present_or_absent:  present
+  tasks:
+  - name:  Install/Remove httpd
+    ansible.builtin.package:
+      name:  "{{ package }}"
+      state:  "{{ present_or_absent }}"
+    register:   install_result
+
+  - debug:
+      var:  install_result
