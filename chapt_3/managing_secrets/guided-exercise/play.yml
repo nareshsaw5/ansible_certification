@@ -1,0 +1,15 @@
+---
+- name:  Install firewalld and enable it
+  hosts: all
+  vars: 
+    pkg: firewalld
+  tasks:
+  - name:  Install {{ pkg }}
+    ansible.builtin.package:
+      name:
+      - "{{ pkg }}"
+      state: present
+  - name:  Enable {{ pkg }}
+    ansible.builtin.service:
+      name: "{{ pkg }}"
+      enabled:  true

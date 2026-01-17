@@ -1,0 +1,14 @@
+---
+- name: Install packages
+  hosts:  webserver
+  vars:
+    web_pkg:  httpd
+    firewalld_pkg:  firewalld
+  tasks:
+  - name:  Install packages
+    ansible.builtin.dnf:
+      name:
+      - "{{ web_pkg }}"
+      - "{{ firewalld_pkg }}"
+      state: latest
+

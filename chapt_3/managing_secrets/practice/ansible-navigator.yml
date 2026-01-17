@@ -1,0 +1,13 @@
+ansible-navigator:
+   execution-environment:
+     enabled:  false
+   playbook-artifact:
+     enable:  false
+#   execution-environment:
+#     # Specify the container engine (auto=podman then docker)
+#     container-engine: auto
+#     # Extra parameters passed to the container engine command
+#     container-options:
+#       - "--net=host"
+#     # Enable or disable the use of an execution environment
+#     enabled: True

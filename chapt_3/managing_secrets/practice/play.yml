@@ -1,0 +1,11 @@
+---
+- name:  Install httpd
+  hosts:  webserver
+  vars:
+    web_pkg: httpd
+  tasks:
+  - name:  Install httpd
+    ansible.builtin.dnf:
+      name:
+      -  "{{ web_pkg }}"
+      state:  latest 
