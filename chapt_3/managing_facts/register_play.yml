@@ -1,0 +1,16 @@
+---
+- name:  Use register to print the outcome of the task
+  hosts: all
+  tasks:
+  - name:  Install httpd
+    ansible.builtin.package:
+      name:
+      - httpd
+      state:  present
+    register:  httpd_install_status
+  - name:  Print httpd_install_status
+    ansible.builtin.debug:
+      var:  httpd_install_status
+  - name:  Print facts
+    ansible.builtin.debug:
+      var:  ansible_facts

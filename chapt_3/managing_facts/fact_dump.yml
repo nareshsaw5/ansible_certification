@@ -1,0 +1,7 @@
+---
+- name:  Demo of gathering facts from hosts. This is normally done by ansible.builtin.setup module which run by default before running any tasks in a playbook
+  hosts: all
+  tasks:
+  - name: Print all facts
+    ansible.builtin.debug:
+      var: ansible_facts

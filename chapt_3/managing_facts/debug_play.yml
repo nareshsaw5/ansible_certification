@@ -1,0 +1,7 @@
+---
+- name: Print Gathered facts which gather information across hot nodes before a task is run during a playbook run
+  hosts: all
+  tasks:
+  - name:  Print facts
+    ansible.builtin.debug:
+       var: ansible_facts
