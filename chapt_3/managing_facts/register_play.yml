@@ -14,3 +14,6 @@
   - name:  Print facts
     ansible.builtin.debug:
       var:  ansible_facts
+  - name:  Print list of interfaces
+    ansible.builtin.debug:
+      var:  ansible_facts['interfaces']

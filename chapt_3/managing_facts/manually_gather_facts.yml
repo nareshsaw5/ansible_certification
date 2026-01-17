@@ -1,0 +1,11 @@
+---
+- name:  Manually gather facts
+  hosts:  all
+  gather_facts:  false
+  tasks:
+  - name:  Gather manually the facts
+    ansible.builtin.setup:
+  - name:  Print facts
+    ansible.builtin.debug:
+      msg: > 
+        The interface {{ ansible_facts.default_ipv4.address}}

@@ -1,0 +1,13 @@
+---
+- name:   Custom fact testing
+  hosts:  all
+  gather_facts:  true
+  tasks:
+  - name:  Display all facts in ansible_local
+    ansible.builtin.debug:
+      var:  ansible_local
+  
+  - name:  Prints various Ansible facts
+    ansible.builtin.debug:
+      msg: >
+           The package to install on {{ ansible_facts['fqdn'] }} is {{ ansible_facts['ansible_local']['custom']['packages']['web_package'] }}
