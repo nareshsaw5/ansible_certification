@@ -1,0 +1,12 @@
+--- 
+- name:  Remove user from secret.yml
+  hosts: devservers
+  vars_files:
+  - secret.yml
+  tasks:
+  - name:  Remove user {{ username }}
+    ansible.builtin.user:
+      name:  "{{ username }}"
+      state:  absent
+      
+    
