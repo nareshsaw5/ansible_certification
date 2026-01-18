@@ -1,0 +1,8 @@
+---
+- name: Prints magic variable which are reserved and available in ansible_facts
+  hosts: all
+  tasks:
+  - name:  Print hostvars
+    ansible.builtin.debug:
+      var:  hostvars
+
