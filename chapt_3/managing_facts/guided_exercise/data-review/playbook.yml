@@ -1,0 +1,38 @@
+---
+- name:  Install and configure the web server hosts with an Apache HTTP server that has basic authentication enabled.
+  hosts: server
+  vars:
+    firewall_pkg:  firewalld
+    firewall_svc:  firewalld
+    web_pkg:  httpd
+    web_svc:  httpd
+    ssl_pkg:  mod_ssl
+    httpdconf_src:  files/httpd.conf
+    httpdconf_dest:  /etc/httpd/conf/httpd.conf
+    htaccess_src:  files/.htaccess
+    secrets_dir:  /etc/httpd/secrets
+    secrets_src:  files/htpasswd
+    secrets_dest:  " {{ secrets_dir }}/htpasswd"
+    web_root:  /var/www/html
+  tasks:
+  - name:  Ensure packages {{ firewall_pkg }}, {{ web_pkg }} and {{ ssl_pkg }} are installed
+    ansible.builtin.package:
+      name:
+      - "{{ firewall_pkg }}"
+      - "{{ web_pkg }}"
+      - "{{ ssl_pkg }}"
+
+
+  - name:  Ensure file httpd is copied.
+    ansible.builtin.copy:
+      src:  "{{ httpdconf_src }}"
+      dest:  "{{ httpdconf_dest }}"
+
+  - name:  Ensure dir {{ secrets_dir }} is created
+    ansible.builtin.file:
+      path:  "{{ secrets_dir }"
+      group:  "apache"
+      mode:  '0400'
+    
+    
+  
