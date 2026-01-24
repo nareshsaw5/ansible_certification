@@ -1,0 +1,14 @@
+---
+- name:  Play which uses register in a loop
+  hosts: all
+  tasks:
+  - name:  Looping Echo task
+    ansible.builtin.shell:  "echo this is my item: {{ item }}"
+    loop:
+    - one
+    - two
+    register:  results
+
+  - name:  Show echo_result variable
+    ansible.builtin.debug:
+      var:  results

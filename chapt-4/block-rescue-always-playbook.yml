@@ -1,0 +1,22 @@
+---
+- name:  Example of block, rescue and always in a playbook
+  hosts:  prod
+  tasks:
+  - name:  Install http service with block, rescue and always
+    block:
+    - name:  Try http
+      ansible.builtin.dnf:
+        name:  http
+        state:  present
+    rescue:
+    - name:  failed in block, hence trying with rescue
+      ansible.builtin.dnf:
+        name:  http-l
+        state:  present
+    always:
+    - name:  failed in rescue, hence trying in always
+      ansible.builtin.dnf:
+        name:  httpd
+        state:  present
+
+     

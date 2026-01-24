@@ -1,0 +1,6 @@
+[dev]
+node-1  packages=[httpd,firewalld]
+
+[prod]
+node-2
+

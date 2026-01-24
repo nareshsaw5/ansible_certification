@@ -1,0 +1,17 @@
+---
+- name:  Block example which is a logicall grouping of tasks
+  hosts:  prod
+  tasks:
+  - name:  installing and configuring DNF versionlock plugin
+    block:
+    - name:  package needed by dnf
+      ansible.builtin.dnf:
+        name:  python3-dnf-plugin-versionlock
+        state:  present
+    - name:  gpgckeck in dnf.conf
+      ansible.builtin.lineinfile:
+        dest:  /etc/dnf/dnf.conf
+        line:  gpgcheck=1
+        state:  present
+    when:  ansible_distribution == "CentOS" 
+  

@@ -1,0 +1,10 @@
+[bangalore]
+node-1
+
+
+[chennai]
+node-2
+
+[datacenter:children]
+bangalore
+chennai

@@ -1,0 +1,13 @@
+---
+- name:  Simple playbook which uses loop
+  hosts: webserver
+  vars:
+    services:
+    - httpd
+    - firewalld
+  tasks:
+  - name:  Is {{ item }} running?
+    ansible.builtin.service:
+      name:  "{{ item }}"
+      state:  started
+    loop: "{{ services }}"

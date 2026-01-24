@@ -1,0 +1,19 @@
+---
+- name:  Demonstrate the "in" keyword
+  hosts:  webserver
+  vars:
+    supported_distros:
+      - RedHat
+      - Fedora
+      - CentOS
+  tasks:
+  - name:  Print distribution 
+    ansible.builtin.debug:
+      var:  ansible_facts['distribution']
+
+  - name:  Check service if distros are supported
+    ansible.builtin.service:
+      name:  firewalld
+      enabled:  true
+    when: ansible_facts['distribution'] in supported_distros
+  

@@ -1,0 +1,7 @@
+- name:  Print variables
+  hosts:  dev
+  tasks:
+  - name:  Print variables from inventory
+    ansible.builtin.debug:
+      msg: Hello {{ item}}
+    loop: "{{ services}}"

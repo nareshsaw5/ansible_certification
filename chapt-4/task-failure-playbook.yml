@@ -1,0 +1,16 @@
+---
+- name:  Handle Task Failures playbook
+  hosts: dev
+  vars:
+     http_service:  http
+     firewall_service:  firewalld
+  tasks:
+  - name:  Restart HTTP service
+    ansible.builtin.service:
+      name:  "{{ http_service }}"
+      state:  restarted
+    ignore_errors:  true
+  - name:  Restart Firewall service
+    ansible.builtin.service:
+      name:  "{{ firewall_service }}"
+      state:  restarted 

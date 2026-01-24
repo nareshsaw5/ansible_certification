@@ -1,0 +1,24 @@
+---
+- name:  Restart service on change of file
+  hosts:  bangalore
+  vars:
+    services:
+    - httpd
+  tasks:
+  - name:  Change home page
+    ansible.builtin.copy:
+      src:  files/index.html
+      dest:  /var/www/html/index.html
+    notify:  restart http service
+  - name:  Check http service
+    ansible.builtin.uri:
+      url:  http://node-1
+      return_content:  1
+
+ 
+  handlers:
+  - name:  restart http service
+    ansible.builtin.service:
+      name:  httpd
+      state:  restarted
+       

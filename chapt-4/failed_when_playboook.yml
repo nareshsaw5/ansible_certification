@@ -1,0 +1,8 @@
+---
+- name:  Example of failed-when in playbook
+  hosts:  prod
+  tasks:
+  - name:  Run user creation script
+    ansible.builtin.shell:  /root/create_user.sh
+    register:  command_result
+    failed_when:  "useradd: user 'john' already exists in command_result.stdout"

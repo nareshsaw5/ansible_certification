@@ -1,0 +1,16 @@
+- name:  Restart httpd after changing home page 
+  hosts:  bangalore
+  env:
+    service:  httpd
+  tasks:
+  - name:  Change home page 
+    ansible.builtin.copy:
+      src:  files/index.html
+      dest:  /var/www/html/index.html  
+    notify: restart web service
+  
+  handlers:
+  - name:  restart web service
+    ansible.builtin.service:
+      name:  httpd
+      state:  restarted

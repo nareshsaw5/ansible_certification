@@ -1,0 +1,6 @@
+[database_dev]
+node-1
+
+[database_prod]
+node-2
+

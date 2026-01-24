@@ -1,0 +1,11 @@
+---
+- name: Playbook of simple loops
+  hosts: webserver
+  tasks:
+  - name: httpd and firewalld is running
+    ansible.builtin.service:
+      name:  "{{ item }}"
+      state:  started
+    loop:
+      - httpd
+      - firewalld

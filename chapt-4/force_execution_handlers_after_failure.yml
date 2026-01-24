@@ -1,0 +1,24 @@
+---
+- name:  Force handlers to execute even if the task failed
+  hosts:  prod
+  force_handlers:  true
+  tasks:
+  - name:  a task which always notifies its handler
+    ansible.builtin.command:  /bin/true
+    notify:  restart the service
+  - name:  a task which fails because the package doesn't exist
+    ansible.builtin.dnf:
+      name:  nopackage
+      state:  latest
+
+  handlers:
+  - name:  restart the service
+    ansible.builtin.service:
+      name:  httpd
+      state:  restarted
+      enabled:  true
+   
+  
+   
+
+   

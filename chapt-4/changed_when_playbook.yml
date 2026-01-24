@@ -1,0 +1,17 @@
+---
+- name:  Example of changed_when 
+  hosts:  prod
+  tasks:
+  - name:  Upgrade database
+    ansible.builtin.command:  /usr/local/bin/upgrade-database
+    register:  command_result
+    changed_when:  "'success' in command_result.stdout"
+    ignore_errors:  true
+    notify:
+    - restart_database
+
+  handlers:
+  - name:  restart_databse
+    ansible.builtin.service:
+      name:  mariadb
+      state:  restarted

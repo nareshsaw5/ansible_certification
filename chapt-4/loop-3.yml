@@ -1,0 +1,14 @@
+---
+- name:  Use of yml dictionary in loop
+  hosts:  webserver
+  tasks: 
+  - name:  Check user {{ item['name'] }} exists
+    ansible.builtin.user:
+      name:  "{{ item['name'] }}"
+      state:  present
+      groups: "{{ item['groups'] }}"
+    loop:
+    - name:  naresh
+      groups:  wheel
+    - name:  joe
+      groups:  root

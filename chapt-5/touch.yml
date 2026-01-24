@@ -1,0 +1,11 @@
+- name: Touch a file playbook
+  hosts: dev
+  become: false
+  tasks:
+  - name:  Touch a file and set permission
+    ansible.builtin.file:
+      path:  ~/hello
+      owner: naresh
+      group: naresh
+      mode: 0640
+      state: touch

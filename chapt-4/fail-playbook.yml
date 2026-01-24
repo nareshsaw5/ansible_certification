@@ -1,0 +1,14 @@
+
+---
+- name:  Demonstrate fail_when statement
+  hosts:  prod
+  tasks:
+  - name:  Run user creation script
+    ansible.builtin.shell:  /root/create_user.sh
+    register: command_result
+    ignore_errors:  true
+  - name:  Report script error
+    ansible.builtin.fail:
+       msg:  "Ther user exists"
+    when: "useradd: user 'john' already exists"
+
