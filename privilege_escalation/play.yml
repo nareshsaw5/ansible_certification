@@ -1,0 +1,8 @@
+- name:  Demo of privileged escalation
+  hosts:  web
+  tasks:
+  - name:  Restart httpd service
+    ansible.builtin.service:
+      name:  httpd
+      state:  restarted
+      enabled:  true
