@@ -1,0 +1,13 @@
+---
+- name:  Demo of sync
+  hosts: dev
+  tasks:
+  - name:  Sync {{ directory }} to managed nodes
+    ansible.posix.synchronize:
+      src:  "{{ directory }}"
+      dest: /home/naresh/
+    register:  output
+  - name:  Display the output
+    ansible.builtin.debug:
+     msg:  "{{ output }}"
+

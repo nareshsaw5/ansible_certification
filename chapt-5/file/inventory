@@ -1,5 +1,7 @@
 [dev]
 node-1
+node-2
+node-3
 
 [prod]
 node-2

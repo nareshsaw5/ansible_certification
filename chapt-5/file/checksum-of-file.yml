@@ -1,0 +1,12 @@
+---
+- name:  The playbook retrieve stat of file
+  hosts: dev
+  tasks:
+  - name: Get the stat of file - hello
+    ansible.builtin.stat:
+      path:  /home/naresh/hello
+      checksum_algorithm:  md5
+    register: result
+  - name:  Print the md5 checksum of - hello
+    ansible.builtin.debug:
+      msg:  " The checksum of the file is {{ result.stat.checksum }}"

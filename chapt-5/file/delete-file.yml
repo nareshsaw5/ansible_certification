@@ -1,0 +1,12 @@
+- name:  Delete file playbook
+  hosts: dev
+  tasks:
+  - name:  Delete hello
+    ansible.builtin.file:
+      path: /home/naresh/{{ item }}
+      state: absent
+    loop:
+    - hello
+    - hello-2
+    - hello-3
+

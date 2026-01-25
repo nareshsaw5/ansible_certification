@@ -1,0 +1,7 @@
+- name:  Demo of copy
+  hosts: dev
+  tasks:
+  - name:  copy file 
+    ansible.builtin.copy:
+      src: file
+      dest: /home/naresh/file

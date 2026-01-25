@@ -1,0 +1,7 @@
+- name:  Retrieve SSH key from reference hosts
+  hosts:  node-1
+  tasks:
+  - name:  Retrieve ssh key
+    ansible.builtin.fetch:
+     src:  /etc/passwd
+     dest:  files

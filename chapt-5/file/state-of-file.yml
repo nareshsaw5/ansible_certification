@@ -1,0 +1,12 @@
+---
+- name:  Playbook to check the stat of a file in ansible
+  hosts: dev
+  tasks:
+  - name:  Verify the checksum of a file
+    ansible.builtin.stat:
+      path: /home/naresh/hello
+      checksum_algorithm: md5
+    register: result
+  - name:  Print md5 content
+    ansible.builtin.debug:
+      msg:  md5 checksum of hello file {{ result.stat.checksum }}

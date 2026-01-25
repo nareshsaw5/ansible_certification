@@ -1,0 +1,15 @@
+- name:  Add a line - playbook
+  hosts: dev
+  tasks:
+  - name:  Create hello file
+    ansible.builtin.file:
+      path:  /home/naresh/hello
+      owner:  naresh
+      group: naresh
+      mode: 0644
+
+  - name:  Edit file hello
+    ansible.builtin.lineinfile:
+      path: /home/naresh/hello
+      line:  "Hello Naresh"
+      state: present
