@@ -1,0 +1,8 @@
+This is system - {{ ansible_facts['fqdn'] }}.
+This is a {{ ansible_facts['distribution'] }} version {{ ansible_facts['distribution_version'] }} system.
+{% if ansible_facts['fqdn'] in groups['prod'] %}
+This is in prod. As a workstation user, you need to submit a ticket to receive help with any issue.
+{% elif ansible_facts['fqdn'] in groups['dev'] %}
+Please report issue to: {{ system_owner }}.
+{% endif %}
+

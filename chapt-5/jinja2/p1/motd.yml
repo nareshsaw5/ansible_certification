@@ -1,0 +1,12 @@
+- name: Demonstrate jinja2 template
+  hosts:  dev
+  remote_user: naresh
+  tasks:
+  - name:  Set motd message from jinja2
+    ansible.builtin.template:
+      src: motd.j2
+      dest:  /etc/motd
+    register:  output
+  - name: Print output
+    ansible.builtin.debug:
+      var:  output 

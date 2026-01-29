@@ -1,0 +1,7 @@
+- name:  This is demonstration of ninja2 template
+  hosts:  dev
+  tasks:
+  - name:  Deploy motd message on hosts
+    ansible.builtin.template:
+      src:  motd.j2
+      dest:  /etc/motd
