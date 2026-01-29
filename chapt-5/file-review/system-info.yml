@@ -1,0 +1,7 @@
+- name:  This playbook shows system information when user log-in to a host machine.
+  hosts:  servers
+  tasks:
+  - name:  Push the template to host with system-information configuration
+    ansible.builtin.template:
+     src: templates/motd.j2
+     dest:  /etc/motd
