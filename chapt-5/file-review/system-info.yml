@@ -5,3 +5,31 @@
     ansible.builtin.template:
      src: templates/motd.j2
      dest:  /etc/motd
+     become: true
+     owner: root
+     group: root
+     mode: 0644
+  - name:  Get the stat of /etc/motd
+    ansible.builtin.stat:
+      path: /etc/motd
+    register: file_stat
+  - name:  Print file_stat
+    ansible.builtin.debug:
+     var: file_stat
+      
+  - name:  Copy files/issue into the /etc directory
+    ansible.builtin.copy:
+      src: files/issue
+      dest:  /etc/
+      mode: 0644
+      owner:  root
+      group:  root
+  - name:  Create a symbolic link /etc/issue.net to /etc/issue
+    ansible.builtin.file:
+      src: /etc/issue
+      dest: /etc/issue.net
+      state: link
+      force: true 
+      owner:  root
+      group:  root
+

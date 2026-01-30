@@ -1,0 +1,7 @@
+- name:  Display host selection during running playbook
+  hosts:  lab,example
+  gather_facts:  false
+  tasks:
+  - name:  Display hosts
+    ansible.builtin.debug:
+     msg:  "{{ inventory_hostname }}"

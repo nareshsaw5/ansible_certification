@@ -1,0 +1,10 @@
+- name:  Demo of stat module
+  hosts:  servers
+  tasks:
+  - name:  Get the stat of /etc/passwd
+    ansible.builtin.stat:
+      path:  /etc/passwd
+    register:  passwd_stat
+  - name:  Print stat of /etc/passwd
+    ansible.builtin.debug:
+      var:  passwd_stat

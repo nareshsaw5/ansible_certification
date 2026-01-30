@@ -1,0 +1,7 @@
+- name:  Display host selection during running playbook
+  hosts:  '192.168.56.61'
+  gather_facts:  false
+  tasks:
+  - name:  Display hosts
+    ansible.builtin.debug:
+     msg:  "{{ inventory_hostname }}"

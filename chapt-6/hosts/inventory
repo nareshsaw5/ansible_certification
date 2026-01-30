@@ -1,0 +1,11 @@
+node-1
+192.168.56.61
+
+[lab]
+node-2
+node-3
+
+[example]
+node-4
+node-3
+node-2

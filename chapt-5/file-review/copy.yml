@@ -1,0 +1,19 @@
+- name:  Demo of copy with owner,group,mode and selinux
+  hosts:  servers
+  tasks:
+  - name:  Copy file hello to /tmp 
+    ansible.builtin.copy:
+     src:  hello
+     dest:  /tmp/hello
+     owner:  naresh
+     group: naresh
+     mode:  0644
+     setype:  _default
+  - name:  Execute custom command to show the content of hello
+    ansible.builtin.command:  cat /tmp/hello
+    register:  output
+  - name:  Content of the file
+    ansible.builtin.debug: 
+     msg:  "{{ output['stdout_lines'] }}"
+     
+     
